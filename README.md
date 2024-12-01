@@ -40,16 +40,17 @@ Here is the complete list of languages for the challenge:
 ## 📁 Project Structure
 Each day’s solution will be organized in the following structure:
 ```
-/AdventOfCode2024\
-├── day01/\
-│ ├── solution.py\
-│ ├── README.md\
-│ └── ...\
-├── day02/\
-│ ├── solution.rs\
-│ ├── README.md\
-│ └── ...\
-...
+/AoC-2024\
+└── solutions/\
+  ├── day01-zig/\
+  │ ├── solution.zig\
+  │ ├── README.md\
+  │ └── ...\
+  ├── day02-python/\
+  │ ├── solution.py\
+  │ ├── README.md\
+  │ └── ...\
+  └── ...\
 ```
 
 ### Daily Folder Contents
