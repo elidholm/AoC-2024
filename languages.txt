@@ -1,0 +1,36 @@
+---------
+LANGUAGES
+---------
+
+Day 1 - Zig
+Day 2 - Scala
+Day 3 - R
+Day 4 - ?
+
+-------------------
+REMAINING LANGUAGES
+-------------------
+
+Python
+Python
+Python
+Rust
+Rust
+Rust
+Julia
+Julia
+Julia
+Javascript
+C++
+Mojo
+Dart
+Haskell
+Typescript
+Kotlin
+Ruby
+Lua
+Bash
+Java
+OCaml
+Go
+Groovy
