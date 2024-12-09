@@ -7,3 +7,6 @@ part2
 
 *.bsp
 *.scala-build
+
+node_modules/
+package*.json
