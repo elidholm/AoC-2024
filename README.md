@@ -43,18 +43,20 @@ Each day’s solution will be organized in the following structure:
 /AoC-2024\
 └── solutions/\
   ├── day01-zig/\
-  │ ├── solution.zig\
+  │ ├── part1.zig\
+  │ ├── part2.zig\
   │ ├── README.md\
   │ └── ...\
   ├── day02-python/\
-  │ ├── solution.py\
+  │ ├── part1.py\
+  │ ├── part2.py\
   │ ├── README.md\
   │ └── ...\
   └── ...\
 ```
 
 ### Daily Folder Contents
-- `solution.<ext>`: The solution in the selected language for the day.
+- `part[1|2].<ext>`: The solutions to both parts of the problem in the selected language for the day.
 - `README.md`: A brief explanation of the approach, challenges faced, and thoughts on the language used.
 
 ## 🌟 Why This Challenge?
