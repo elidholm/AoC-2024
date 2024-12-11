@@ -10,3 +10,5 @@ part2
 
 node_modules/
 package*.json
+
+*.jar
