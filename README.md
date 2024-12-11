@@ -47,9 +47,9 @@ Each day’s solution will be organized in the following structure:
   │ ├── part2.zig\
   │ ├── README.md\
   │ └── ...\
-  ├── day02-python/\
-  │ ├── part1.py\
-  │ ├── part2.py\
+  ├── day02-scala/\
+  │ ├── part1.scala\
+  │ ├── part2.scala\
   │ ├── README.md\
   │ └── ...\
   └── ...\
@@ -61,6 +61,7 @@ Each day’s solution will be organized in the following structure:
 
 ## 🌟 Why This Challenge?
 Advent of Code is a fantastic opportunity to:
+- Practice learning *how to learn* new things.
 - Improve problem-solving skills.
 - Explore and learn new programming languages.
 - Challenge myself with unfamiliar tools and syntax.
