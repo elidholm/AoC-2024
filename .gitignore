@@ -1,4 +1,5 @@
 input.txt
+test-input.txt
 
 part1
 part2
@@ -7,6 +8,8 @@ part2
 
 *.bsp
 *.scala-build
+
+.ruby-lsp/
 
 node_modules/
 package*.json
