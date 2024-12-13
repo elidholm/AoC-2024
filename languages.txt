@@ -11,9 +11,10 @@ Day 6  - Kotlin ✔️
 Day 7  - Python ✔️
 Day 8  - Python ✔️
 Day 9  - Haskell ✔️
-Day 10 - Bash
-Day 11 - Julia
+Day 10 - Bash ✔️
+Day 11 - Julia ✔️
 Day 12 - OCaml
+Day 13 - Julia
 
 -------------------
 REMAINING LANGUAGES
@@ -23,7 +24,6 @@ Python
 Rust
 Rust
 Rust
-Julia
 Julia
 Javascript
 C++
