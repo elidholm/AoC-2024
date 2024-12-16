@@ -26,13 +26,10 @@ REMAINING LANGUAGES
 Python
 Rust
 Rust
-Rust
 Julia
 Javascript
 C++
 Mojo
 Dart
 Lua
-Java
-Go
 Groovy
