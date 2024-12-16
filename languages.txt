@@ -2,19 +2,22 @@
 LANGUAGES
 ---------
 
-Day 1  - Zig ✔️
-Day 2  - Scala ✔️
-Day 3  - R ✔️
-Day 4  - Ruby ✔️
-Day 5  - Typescript ✔️
-Day 6  - Kotlin ✔️
-Day 7  - Python ✔️
-Day 8  - Python ✔️
-Day 9  - Haskell ✔️
-Day 10 - Bash ✔️
-Day 11 - Julia ✔️
-Day 12 - OCaml
-Day 13 - Julia
+Day 1  - Zig ✔️✔️
+Day 2  - Scala ✔️✔️
+Day 3  - R ✔️✔️
+Day 4  - Ruby ✔️✔️
+Day 5  - Typescript ✔️✔️
+Day 6  - Kotlin ✔️✔️
+Day 7  - Python ✔️✔️
+Day 8  - Python ✔️✔️
+Day 9  - Haskell ✔️✔️
+Day 10 - Bash ✔️✔️
+Day 11 - Julia ✔️✔️
+Day 12 - OCaml ✔️✔️
+Day 13 - Julia ✔️✔️
+Day 14 - Go
+Day 15 - Java
+Day 16 - Rust
 
 -------------------
 REMAINING LANGUAGES
