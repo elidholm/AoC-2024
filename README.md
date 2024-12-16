@@ -6,12 +6,12 @@ For this year’s [Advent of Code](https://adventofcode.com/2024), I’ve decide
 - Every day, a programming language will be randomly selected from a predefined list using the [Wheel of Names](https://wheelofnames.com/).
 - Once a language is selected, it is removed from the list to avoid repetition.
 - The list includes 20 different languages, with some repeats to reflect my familiarity:
-  - **Python**, **Rust**, and **Julia** appear **3 times each**, as I have prior experience with them.
+  - **Python** appears **2 times**, while **Rust** and **Julia** appear **3 times each**, as I have prior experience with them.
   - All other languages appear once for variety.
 
 ## 🛠️ The Languages
 Here is the complete list of languages for the challenge:
-- **Python** (x3)
+- **Python** (x2)
 - **Rust** (x3)
 - **Julia** (x3)
 - Javascript
@@ -31,6 +31,7 @@ Here is the complete list of languages for the challenge:
 - Scala
 - R
 - Groovy
+- PyGyat
 
 ## 📝 Rules
 1. The language of the day will be chosen randomly using the [Wheel of Names](https://wheelofnames.com/).
