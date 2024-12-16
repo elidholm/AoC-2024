@@ -23,7 +23,7 @@ Day 16 - Rust
 REMAINING LANGUAGES
 -------------------
 
-Python
+PyGyat
 Rust
 Rust
 Julia
