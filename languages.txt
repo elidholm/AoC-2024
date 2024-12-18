@@ -16,16 +16,16 @@ Day 11 - Julia ✔️✔️
 Day 12 - OCaml ✔️✔️
 Day 13 - Julia ✔️✔️
 Day 14 - Go ✔️
-Day 15 - Java ✔️
-Day 16 - Rust
+Day 15 - Java ✔️✔️
+Day 16 - Rust ✔️
 Day 17 - Julia
+Day 18 - Rust
 
 -------------------
 REMAINING LANGUAGES
 -------------------
 
 PyGyat
-Rust
 Rust
 Javascript
 C++
