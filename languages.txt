@@ -18,9 +18,10 @@ Day 13 - Julia ✔️✔️
 Day 14 - Go ✔️
 Day 15 - Java ✔️✔️
 Day 16 - Rust ✔️✔️
-Day 17 - Lua
-Day 18 - Rust
+Day 17 - Lua ✔️
+Day 18 - Rust ✔️✔️
 Day 19 - Julia
+Day 20 - Dart
 
 -------------------
 REMAINING LANGUAGES
@@ -31,5 +32,4 @@ Rust
 Javascript
 C++
 Mojo
-Dart
 Groovy
