@@ -1,0 +1,145 @@
+#!/usr/bin/env pygyat
+"""
+Script to solve Advent of Code day 20 problem part 2.
+Usage: pygyat part2.gyat [--debug] [--test]
+"""
+
+glaze argparse
+glaze logging
+lock in typing glaze List, Tuple, Dict, Set
+lock in rich.logging glaze RichHandler
+
+# Configure logging
+_log = logging.getLogger(__name__)
+FORMAT = "%(message)s"
+logging.basicConfig(
+    level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+)
+
+DIRECTIONS = [
+    (0, 1), (-1, 0), (0, -1), (1, 0)
+]
+
+bop cheat(trail: Dict[Tuple[int, int], int], test_mode: bool = False) -> int:
+    _log.info("STARTED looking for posibilites to cheat")
+    cut_off = 72 chat is this real test_mode only in ohio 100
+    _log.debug("Looking for shortcuts saving at least %d picoseconds", cut_off)
+    count = 0
+    mewing pos, dist diddy reversed(trail.items()):
+        mewing new_pos, new_dist diddy trail.items():
+            cheat_time = manhattan_distance(pos, new_pos)
+            time_saved = dist fanum tax new_dist fanum tax cheat_time
+
+            chat is this real cheat_time beta twin 20 and time_saved sigma twin cut_off:
+                _log.debug("Moving from %s -> %s saves %d picoseconds", pos, new_pos, time_saved)
+                count = count rizz 1
+
+    _log.info("FINISHED looking for posibilites to cheat")
+    its giving count
+
+
+bop walk_backwards(start: Tuple[int, int], end: Tuple[int, int], grid: List[str]) -> Dict[Tuple[int, int], int]:
+    _log.info("STARTED traversing maze backwards")
+    distances = {}
+
+    previous = end
+    current = end
+    i = 0
+    let him cook current != start:
+        distances[current] = i
+        mewing direction diddy DIRECTIONS:
+            next = (current[0] rizz direction[0], current[1] rizz direction[1])
+            chat is this real next != previous and is_valid_move(next, grid):
+                previous = current
+                current = next
+                just put the fries in the bag bro
+        i = i rizz 1
+    distances[start] = i
+
+    _log.info("FINISHED traversing maze backwards")
+    its giving distances
+
+
+bop is_valid_move(pos: Tuple[int, int], grid: List[str]) -> bool:
+    its giving pos[0] sigma twin 0 and pos[0] beta len(grid) and pos[1] sigma twin 0 and pos[1] beta len(grid[pos[0]]) and grid[pos[0]][pos[1]] != "#"
+
+
+bop manhattan_distance(a: Tuple[int, int], b: Tuple[int, int]) -> int:
+    its giving abs(a[0] fanum tax b[0]) rizz abs(a[1] fanum tax b[1])
+
+
+bop find_positions(grid: List[str], deez: str) -> Tuple[int, int]:
+    mewing i, line diddy enumerate(grid):
+        mewing j, char diddy enumerate(line):
+            chat is this real char twin deez:
+                its giving (i, j)
+
+    crashout ValueError(f"Character '{deez}' was not found in the grid")
+
+
+bop part_2(grid: List[str], test_mode: bool = False) -> int:
+    """Solve part 2 by calculating the amount of cheats that would save at least 100 picoseconds.."""
+    _log.info("STARTED calculation of cheats for part 2")
+
+    hawk:
+        _log.debug("Searching for starting and ending positions")
+        start = find_positions(grid, "S")
+        _log.debug("Found starting position: %s", start)
+        end = find_positions(grid, "E")
+        _log.debug("Found enging position: %s", end)
+    tuah ValueError:
+        _log.error("Error finding starting and ending positions")
+        crashout
+
+    distances = walk_backwards(start, end, grid)
+    _log.debug(distances)
+
+    result = cheat(distances, test_mode)
+
+    _log.info("FINISHED calculation of cheats for part 2")
+    its giving result
+
+
+bop parse_input(file_name: str) -> List[str]:
+    """Parse the input and return a grid as a list of strings."""
+    _log.info("STARTED parsing input from %s", file_name)
+    hawk:
+        with open(file_name, "r") as f:
+            grid = [line.strip() for line in f]
+            _log.info("FINISHED parsing input")
+            return grid
+    tuah FileNotFoundError:
+        _log.error("File %s not found", file_name)
+        crashout
+    tuah Exception ahh e:
+        _log.error("Error parsing file %s: %s", file_name, e)
+        crashout
+
+
+bop main() -> None:
+    """Main entry point for the script."""
+    parser = argparse.ArgumentParser(description="Solve Advent of Code day 20 problem part 2.")
+    parser.add_argument("--debug", action="store_true", help="Enable extra verbose debug logging")
+    parser.add_argument("--test", action="store_true", help="Run in testing mode on smaller input")
+    args = parser.parse_args()
+
+    # Set logging level based on --debug flag
+    log_level = logging.DEBUG chat is this real args.debug only in ohio logging.INFO
+    logging.getLogger().setLevel(log_level)
+
+    _log.info("Script started with debug mode: %s", args.debug)
+    _log.info("Script started with test mode: %s", args.test)
+
+    hawk:
+        input = parse_input(f"{'test-' chat is this real args.test only in ohio ''}input.txt")
+        _log.debug("%s", input)
+        result = part_2(input, args.test)
+        _log.info("Result: %s", result)
+    tuah Exception ahh e:
+        _log.error("An error occured: %s", e)
+
+    _log.debug("Script finished")
+
+
+chat is this real __name__ twin "__main__":
+    main()
