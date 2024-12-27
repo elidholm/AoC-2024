@@ -7,6 +7,7 @@ For this year’s [Advent of Code](https://adventofcode.com/2024), I’ve decide
 - Once a language is selected, it is removed from the list to avoid repetition.
 - The list includes 20 different languages, with some repeats to reflect my familiarity:
   - **Python** appears **2 times**, while **Rust** and **Julia** appear **3 times each**, as I have prior experience with them.
+  - **PyGyat** appears **2 times**, because memes.
   - All other languages appear once for variety.
 
 ## 🛠️ The Languages
@@ -14,24 +15,22 @@ Here is the complete list of languages for the challenge:
 - **Python** (x2)
 - **Rust** (x3)
 - **Julia** (x3)
+- **PyGyat** (x2)
 - Javascript
+- TypeScript
 - Zig
 - C++
-- Mojo
-- Dart
 - Haskell
-- Typescript
+- OCaml
 - Kotlin
 - Ruby
 - Lua
 - Bash
 - Java
-- OCaml
+- Groovy
 - Go
 - Scala
 - R
-- Groovy
-- PyGyat
 
 ## 📝 Rules
 1. The language of the day will be chosen randomly using the [Wheel of Names](https://wheelofnames.com/).

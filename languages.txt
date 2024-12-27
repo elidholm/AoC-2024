@@ -15,10 +15,10 @@ Day 10 - Bash ✔️✔️
 Day 11 - Julia ✔️✔️
 Day 12 - OCaml ✔️✔️
 Day 13 - Julia ✔️✔️
-Day 14 - Go ✔️
+Day 14 - Go ✔️✔️
 Day 15 - Java ✔️✔️
 Day 16 - Rust ✔️✔️
-Day 17 - Lua ✔️
+Day 17 - Lua ✔️✔️
 Day 18 - Rust ✔️✔️
 Day 19 - Julia ✔️✔️
 Day 20 - PyGyat ✔️✔️
@@ -26,10 +26,4 @@ Day 21 - C++ ✔️✔️
 Day 22 - Groovy ✔️✔️
 Day 23 - Rust ✔️✔️
 Day 24 - JavaScript ✔️✔️
-Day 25 - PyGyat
-
--------------------
-REMAINING LANGUAGES
--------------------
-
-Dart
+Day 25 - PyGyat ✔️✔️
