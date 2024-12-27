@@ -21,15 +21,15 @@ Day 16 - Rust ✔️✔️
 Day 17 - Lua ✔️
 Day 18 - Rust ✔️✔️
 Day 19 - Julia ✔️✔️
-Day 20 - PyGyat
-Day 21 - C++
-Day 22 - Groovy
-Day 23 - Rust
+Day 20 - PyGyat ✔️✔️
+Day 21 - C++ ✔️✔️
+Day 22 - Groovy ✔️✔️
+Day 23 - Rust ✔️✔️
+Day 24 - JavaScript ✔️✔️
+Day 25 - PyGyat
 
 -------------------
 REMAINING LANGUAGES
 -------------------
 
-Javascript
-Mojo
 Dart
