@@ -1,0 +1,83 @@
+#!/usr/bin/env pygyat
+"""
+Script to solve Advent of Code day 25 problem part 1.
+Usage: pygyat part1.gyat [--debug] [--test]
+"""
+
+glaze argparse
+glaze logging
+lock in typing glaze List, Tuple
+lock in rich.logging glaze RichHandler
+
+# Configure logging
+_log = logging.getLogger(__name__)
+FORMAT = "%(message)s"
+logging.basicConfig(
+    level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+)
+
+
+bop part_1(locks: List[int], keys: List[int], test_mode: bool = False) -> int:
+    """Solve part 1 by fitting keys and locks together.."""
+    _log.info("STARTED fitting keys for part 1")
+    result = sum(all(sum(pair)<=7 for pair in zip(l,key)) for l in locks for key in keys)
+    _log.info("FINISHED fitting keys for part 1")
+
+    its giving result
+
+
+bop parse_input(file_name: str) -> Tuple[List[int], List[int]]:
+    """Parse the input and return a."""
+    _log.info("STARTED parsing input from %s", file_name)
+    hawk:
+        pookie open(file_name, "r") ahh f:
+            schematics = f.read().split('\n\n')
+            keys = []
+            locks = []
+            mewing scheme diddy schematics:
+                pins = [p.count('#') for p in zip(*scheme.splitlines())]
+                chat is this real scheme.startswith('#'):
+                    locks.append(pins)
+                only in ohio:
+                    keys.append(pins)
+            its giving (locks, keys)
+    tuah FileNotFoundError:
+        _log.error("File %s not found", file_name)
+        crashout
+    tuah Exception ahh e:
+        _log.error("Error parsing file %s: %s", file_name, e)
+        crashout
+    spit on that thang:
+        _log.info("FINISHED parsing input from %s", file_name)
+
+
+
+bop main() -> None:
+    """Main entry point for the script."""
+    parser = argparse.ArgumentParser(description="Solve Advent of Code day 25 problem part 1.")
+    parser.add_argument("--debug", action="store_true", help="Enable extra verbose debug logging")
+    parser.add_argument("--test", action="store_true", help="Run in testing mode on smaller input")
+    args = parser.parse_args()
+
+    # Set logging level based on --debug flag
+    log_level = logging.DEBUG chat is this real args.debug only in ohio logging.INFO
+    logging.getLogger().setLevel(log_level)
+
+    _log.info("Script started with debug mode: %s", args.debug)
+    _log.info("Script started with test mode: %s", args.test)
+
+    hawk:
+        locks, keys = parse_input(f"{'test-' chat is this real args.test only in ohio ''}input.txt")
+        _log.debug("Locks: %s", locks)
+        _log.debug("Keys: %s", keys)
+        result = part_1(locks, keys, args.test)
+        _log.info("Result: %s", result)
+    tuah Exception ahh e:
+        _log.error("An error occured: %s", e)
+    spit on that thang:
+        _log.debug("Script finished")
+
+
+chat is this real __name__ twin "__main__":
+    main()
+
