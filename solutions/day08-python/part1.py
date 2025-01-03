@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to solve Advent of Code day 7 problem part 1.
+Script to solve Advent of Code day 8 problem part 1.
 Usage: python part1.py [--debug]
 """
 
@@ -81,7 +81,7 @@ def parse_input(file_name: str) -> List[str]:
 
 def main() -> None:
     """Main entry point for the script."""
-    parser = argparse.ArgumentParser(description="Solve Advent of Code day 7 problem part 1.")
+    parser = argparse.ArgumentParser(description="Solve Advent of Code day 8 problem part 1.")
     parser.add_argument("--debug", action="store_true", help="Enable extra verbose debug logging")
     args = parser.parse_args()
 
