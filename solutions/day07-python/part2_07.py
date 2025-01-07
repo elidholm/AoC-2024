@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 """
-Script to solve Advent of Code day 6 problem part 1.
-Usage: python part1.py [--debug]
+Script to solve Advent of Code day 6 problem part 2.
+Usage: python part2.py [--debug]
 """
 
 import argparse
 import logging
 from typing import List
+
 from rich.logging import RichHandler
 
 # Configure logging
 _log = logging.getLogger(__name__)
 FORMAT = "%(message)s"
-logging.basicConfig(
-    level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-)
+logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
 
 
 class Equation:
@@ -38,6 +37,8 @@ class Equation:
             return True
         if self._is_solvable([operands[0] * operands[1]] + operands[2:]):
             return True
+        if self._is_solvable([int(str(operands[0]) + str(operands[1]))] + operands[2:]):
+            return True
         return False
 
     def __str__(self) -> str:
@@ -50,9 +51,9 @@ class Equation:
         return f"Equation(target_value={self.target_value}, operands={self.operands})"
 
 
-def part_1(equations: List[Equation]) -> int:
-    """Solve part 1 by summing target values of solvable equations."""
-    _log.info("STARTED solving equations for part 1")
+def part_2(equations: List[Equation]) -> int:
+    """Solve part 2 by summing target values of solvable equations."""
+    _log.info("STARTED solving equations for part 2")
     result = 0
     for eq in equations:
         if eq.is_solvable():
@@ -60,7 +61,7 @@ def part_1(equations: List[Equation]) -> int:
             result += eq.target_value
         else:
             _log.debug("Equation %s is NOT solvable", eq)
-    _log.info("FINISHED solving equations for part 1")
+    _log.info("FINISHED solving equations for part 2")
     return result
 
 
@@ -69,7 +70,7 @@ def parse_input(file_name: str) -> List[Equation]:
     _log.info("STARTED parsing input from %s", file_name)
     equations = []
     try:
-        with open(file_name, "r") as f:
+        with open(file_name, mode="r", encoding="utf-8") as f:
             for line in f:
                 left, right = line.strip().split(":")
                 target_value = int(left)
@@ -99,7 +100,7 @@ def main() -> None:
 
     try:
         equations = parse_input("input.txt")
-        result = part_1(equations)
+        result = part_2(equations)
         _log.info("Result: %s", result)
     except Exception as e:
         _log.error("An error occured: %s", e)
