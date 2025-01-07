@@ -1,0 +1,21 @@
+[tool.mypy]
+ignore_missing_imports = true
+follow_imports = "silent"
+warn_redundant_casts = true
+warn_unused_ignores = true
+no_implicit_reexport = true
+check_untyped_defs = true
+
+[tool.pylint.'MESSAGES CONTROL']
+extension-pkg-allow-list = "pydantic"
+# this should be only temporary
+disable = [
+  "missing-module-docstring",
+  "missing-class-docstring",
+  "missing-function-docstring",
+  "duplicate-code",
+  "too-few-public-methods",
+]
+
+[tool.pylint.'FORMAT']
+max-line-length = 119
