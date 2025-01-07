@@ -7,8 +7,8 @@ on:
       - master
 
 jobs:
-  lint:
-    name: Lint and Test
+  python-lint:
+    name: Lint Python
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,3 +30,16 @@ jobs:
         if: '!cancelled()'
         run: |
           mypy $(git ls-files '*.py')
+
+  zig-lint:
+    name: Lint Zig
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Install ziglint
+        uses: AnnikaCodes/install-ziglint@v0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Lint code
+        run: ziglint .
