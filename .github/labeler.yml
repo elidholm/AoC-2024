@@ -1,0 +1,24 @@
+---
+README:
+  - changed-files:
+      - any-glob-to-any-file: README.md
+
+License:
+  - changed-files:
+      - any-glob-to-any-file: LICENSE
+
+Actions:
+  - changed-files:
+      - any-glob-to-any-file: .github/**
+
+Solution:
+  - changed-files:
+      - any-glob-to-any-file: solutions/**/part*
+
+Postmortem:
+  - changed-files:
+      - any-glob-to-any-file: solutions/**/README.md
+
+LAnguages:
+  - changed-files:
+      - any-glob-to-any-file: languages.txt
