@@ -1,6 +1,0 @@
----
-check_name: "RuboCop Results"
-rubocop_fail_level: "warning"
-rubocop_force_exclusion: true
-check_scope: "modified"
-base_branch: "origin/master"

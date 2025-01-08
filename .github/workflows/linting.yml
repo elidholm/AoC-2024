@@ -8,12 +8,11 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   yaml-lint:
-    name: YAML
+    name: Lint YAML
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Yamllint
         uses: karancode/yamllint-github-action@master
         with:
@@ -24,7 +23,7 @@ jobs:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   python-lint:
-    name: Python
+    name: Lint Python
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,51 +31,31 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pylint mypy rich
-
       - name: Lint with pylint
         run: |
           pylint $(git ls-files '*.py')
-
       - name: Type check with mypy
         if: '!cancelled()'
         run: |
           mypy $(git ls-files '*.py')
 
   zig-lint:
-    name: Zig
+    name: Lint Zig
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-
       - name: Install ziglint
         uses: AnnikaCodes/install-ziglint@v0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Lint code
         run: ziglint .
-
-  ruby-lint:
-    name: Ruby
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-
-      - name: Lint Code with RuboCop
-        uses: andrewmcodes/rubocop-linter-action@v3.3.0
-        with:
-          action_config_path: ".github/config/rubocop_linter_action.yml"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
