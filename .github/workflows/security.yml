@@ -1,11 +1,11 @@
 ---
 name: Security Scanning
-on:
+on:  # yamllint disable-line rule:truthy
   push:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # Run once a day at 00:00 UTC
+    - cron: '0 0 * * *'  # Run once a day at 00:00 UTC
 
 jobs:
   scan:
