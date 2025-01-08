@@ -1,6 +1,6 @@
 ---
 name: Ansible CI
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   push:
   pull_request:
     branches:
@@ -48,7 +48,7 @@ jobs:
           pylint $(git ls-files '*.py')
 
       - name: Type check with mypy
-        if: '!cancelled()'
+        if: "!cancelled()"
         run: |
           mypy $(git ls-files '*.py')
 
@@ -83,3 +83,15 @@ jobs:
         uses: rwe/actions-hlint-run@v2
         with:
           path: solutions/
+
+  shellcheck:
+    name: Bash
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -e SC2076
