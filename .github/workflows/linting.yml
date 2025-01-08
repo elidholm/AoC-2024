@@ -59,14 +59,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Lint code
         run: ziglint .
-
-  scalafmt-lint:
-    name: Lint Scala
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Lint code
-        uses: openlawteam/scalafmt-ci@v2
-        with:
-          args: "--exclude=third_party --list"
