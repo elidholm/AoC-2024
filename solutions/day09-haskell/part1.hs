@@ -12,7 +12,7 @@ expand _ = error "Input must contain exactly one line."
 
 -- | Rearranges file blocks to remove gaps and compacts the disk map
 compact :: [(Int, Maybe Int)] -> [(Int, Maybe Int)]
-compact blocks = rearrange [] blocks
+compact  = rearrange []
   where
     rearrange acc [] = reverse acc
     rearrange acc xs
@@ -28,7 +28,7 @@ compact blocks = rearrange [] blocks
 
 -- | Calculates the checksum for the compacted disk map
 checksum :: [(Int, Maybe Int)] -> Int
-checksum blocks = calculateChecksum 0 0 blocks
+checksum = calculateChecksum 0 0
   where
     calculateChecksum position acc [] = acc
     calculateChecksum position acc ((size, Nothing) : rest) = calculateChecksum (position + size) acc rest
@@ -53,5 +53,5 @@ main = do
 
     -- Calculate and print the checksum
     let finalChecksum = checksum compacted
-    putStrLn $ "Checksum for part 1: " ++ (show finalChecksum)
+    putStrLn $ "Checksum for part 1: " ++ show finalChecksum
 

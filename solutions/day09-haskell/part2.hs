@@ -25,8 +25,8 @@ compact blocks = rearrange blocks (reverse blocks)
                     | snd a == snd y = xs
                     | isJust (snd a) = move (a : acc) bs
                     | fst a < fst y = move (a : acc) bs
-                    | fst a == fst y = (reverse acc) ++ [y] ++ (map edit bs)
-                    | fst a > fst y = (reverse acc) ++ [y, (fst a - fst y, Nothing)] ++ (map edit bs)
+                    | fst a == fst y = reverse acc ++ [y] ++ map edit bs
+                    | fst a > fst y = reverse acc ++ [y, (fst a - fst y, Nothing)] ++ map edit bs
                 move _ _ = error "cannot occur"
                 edit a
                     | a == y = (fst y, Nothing)
@@ -34,7 +34,7 @@ compact blocks = rearrange blocks (reverse blocks)
 
 -- | Calculates the checksum for the compacted disk map
 checksum :: [(Int, Maybe Int)] -> Int
-checksum blocks = calculateChecksum 0 0 blocks
+checksum = calculateChecksum 0 0
   where
     calculateChecksum position acc [] = acc
     calculateChecksum position acc ((size, Nothing) : rest) = calculateChecksum (position + size) acc rest
