@@ -1,6 +1,6 @@
 ---
 name: Security Scanning
-on:  # yamllint disable-line rule:truthy
+on:
   push:
   pull_request:
   workflow_dispatch:
