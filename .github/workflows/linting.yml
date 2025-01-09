@@ -122,3 +122,13 @@ jobs:
 
       - name: Lint code
         run: cpplint --recursive --filter=-whitespace/line_length,-runtime/string,-runtime/references .
+
+  luacheck:
+    name: Lua
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Luacheck linter
+        uses: lunarmodules/luacheck@v1
