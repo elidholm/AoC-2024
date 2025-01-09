@@ -177,3 +177,17 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+  checkstyle:
+    name: Java
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Run Checkstyle
+        uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          level: warning
+          workdir: solutions/day15-java/
