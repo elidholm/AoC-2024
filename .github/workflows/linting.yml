@@ -158,3 +158,22 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
+
+  eslint:
+    name: JavaScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install node packages
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
