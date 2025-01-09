@@ -1,35 +1,38 @@
+/*
+ *   Copyright (c) 2024 Edvin Lidholm
+ *   All rights reserved.
+ */
+
 #include <algorithm>
+#include <cassert>
 #include <climits>
 #include <cmath>
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
-#include <iostream>
 #include <fstream>
-#include <cassert>
+#include <iostream>
 #include <string>
+#include <utility>
 #include <vector>
 
-using namespace std;
+std::string codes[5];
 
-string codes[5];
-
-struct Pad
-{
-    pair<int, int> char2coord[256];
+struct Pad {
+    std::pair<int, int> char2coord[256];
     char coord2char[4][3];
 
-    Pad(char coord2char[4][3]);
+    explicit Pad(char coord2char[4][3]);
 };
 
 // zeroes are "forbidden" emplacements
-char raw_numpad[][3]{
+char raw_numpad[][3] {
     {'7', '8', '9'},
     {'4', '5', '6'},
     {'1', '2', '3'},
     {0, '0', 'A'}
 };
-char raw_dirpad[][3]{
+char raw_dirpad[][3] {
     {0, '^', 'A'},
     {'<', 'v', '>'},
     {0, 0, 0},
@@ -45,14 +48,13 @@ int64_t compute_cost(char a, char b, int k, Pad& pad);
 // mem[a][b][k] store the result of compute_cost(a, b, k, ..)
 int64_t mem[256][256][26];
 
-int64_t solve(int bot_number)
-{
+int64_t solve(int bot_number) {
     // set/reset mem
-    for (int k = 256*256*26; k--;) ((int64_t*)mem)[k] = -1;
+    for (int k = 256*256*26; k--;) (reinterpret_cast<int64_t*>(mem))[k] = -1;
 
     int64_t output = 0;
 
-    for (string& code : codes) {
+    for (std::string& code : codes) {
         int64_t cost = compute_cost('A', code[0], bot_number, numpad);
         for (int i = 1; i < code.size(); i++)
             cost += compute_cost(code[i-1], code[i], bot_number, numpad);
@@ -64,13 +66,12 @@ int64_t solve(int bot_number)
 }
 
 
-int main(int argc, char** argv)
-{
-    ifstream file{"input.txt"};
-    for (int i = 0; i<5 && getline(file, codes[i]); i++)
+int main(int argc, char** argv) {
+    std::ifstream file{"input.txt"};
+    for (int i = 0; i < 5 && getline(file, codes[i]); i++)
         if (codes[i].back() == '\r') codes[i].pop_back();
 
-    cout << "Result: " << solve(25) << endl;
+    std::cout << "Result: " << solve(25) << std::endl;
 
     return 0;
 }
@@ -86,7 +87,7 @@ Pad::Pad(char coord2char[4][3]) {
 }
 
 void update_coords(int* i, int* j, char c) {
-    switch(c) {
+    switch (c) {
         case '<': (*j)--; break;
         case '>': (*j)++; break;
         case 'v': (*i)++; break;
@@ -94,8 +95,7 @@ void update_coords(int* i, int* j, char c) {
     }
 }
 
-int64_t compute_cost(char a, char b, int k, Pad& pad)
-{
+int64_t compute_cost(char a, char b, int k, Pad& pad) {
     auto [ia, ja] = pad.char2coord[a];
     auto [ib, jb] = pad.char2coord[b];
 
@@ -109,22 +109,22 @@ int64_t compute_cost(char a, char b, int k, Pad& pad)
 
     // build all legal set of moves that moves the bot's arm
     // from a to b directly (without going backwards or anything)
-    vector<string> possibilities;
-    string poss(di+dj, 0);
-    for (int k = 0; k < 1<<(di+dj); k++) {
+    std::vector<std::string> possibilities;
+    std::string poss(di+dj, 0);
+    for (int k = 0; k < 1 << (di+dj); k++) {
         int nbi = 0, x = ja, y = ia;
         bool forbiden = false;
         for (int i = 0; i < di+dj; i++) {
-            poss[i] = k&(1<<i) ? chari : charj;
+            poss[i] = k&(1 << i) ? chari : charj;
             update_coords(&y, &x, poss[i]);
             forbiden |= !pad.coord2char[y][x];
-            nbi += !!(k&(1<<i));
+            nbi += !!(k&(1 << i));
         }
         if (nbi == di && !forbiden) possibilities.push_back(poss);
     }
 
     // recursively compute the cost of each of these possibilities
-    auto results = vector<int64_t>(possibilities.size(), 0);
+    auto results = std::vector<int64_t>(possibilities.size(), 0);
     for (int i = 0; i < possibilities.size(); i++) {
         results[i] += compute_cost('A', possibilities[i][0], k-1, dirpad);
         for (int j = 1; j < possibilities[i].size(); j++)
