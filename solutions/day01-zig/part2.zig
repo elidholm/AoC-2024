@@ -19,11 +19,8 @@ fn computeSimilarity(data: []const u8) !u32 {
     return calculateSimilarity(leftLocations.items, rightOccurrences);
 }
 
-fn parseInput(
-    inputData: []const u8,
-    leftLocations: *std.ArrayList(u32),
-    rightOccurrences: *std.AutoArrayHashMap(u32, u16)
-) !void {
+// ziglint: ignore
+fn parseInput(inputData: []const u8, leftLocations: *std.ArrayList(u32), rightOccurrences: *std.AutoArrayHashMap(u32, u16)) !void {
     var linesIter = std.mem.tokenizeScalar(u8, inputData, '\n');
 
     while (linesIter.next()) |line| {

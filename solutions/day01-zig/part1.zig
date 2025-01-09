@@ -21,11 +21,8 @@ fn computeTotalDistance(data: []const u8) !u64 {
     return calculateTotalDistance(leftNumbers.items, rightNumbers.items);
 }
 
-fn parseNumbers(
-    inputData: []const u8,
-    leftNumbers: *std.ArrayList(u32),
-    rightNumbers: *std.ArrayList(u32)
-) !void {
+// ziglint: ignore
+fn parseNumbers(inputData: []const u8, leftNumbers: *std.ArrayList(u32), rightNumbers: *std.ArrayList(u32)) !void {
     var linesIter = std.mem.tokenizeScalar(u8, inputData, '\n');
 
     while (linesIter.next()) |line| {
