@@ -42,10 +42,13 @@ jobs:
         run: python -m pip install --upgrade pip
 
       - name: Install dependencies
-        run: pip install pylint mypy rich
+        run: pip install pylint mypy rich flake8
 
       - name: Lint with pylint
         run: pylint $(git ls-files '*.py')
+
+      - name: Lint with flake8
+        run: flake8 $(git ls-files '*.py')
 
       - name: Type check with mypy
         if: "!cancelled()"
@@ -64,7 +67,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lint code
-        run: ziglint .
+        run: ziglint $(git ls-files '*.zig')
 
   hlint:
     name: Haskell
@@ -121,7 +124,11 @@ jobs:
         run: pip install cpplint
 
       - name: Lint code
-        run: cpplint --recursive --filter=-whitespace/line_length,-runtime/string,-runtime/references .
+        run: |
+          cpplint \
+            --recursive \
+            --filter=-whitespace/line_length,-runtime/string,-runtime/references \
+            $(git ls-files '*.cpp')
 
   luacheck:
     name: Lua
