@@ -1,20 +1,27 @@
 import java.io.File
 
-fun readInput(filePath: String): Array<CharArray> {
-    return File(filePath).readLines().map { it.toCharArray() }.toTypedArray()
+fun readInput(filePath: String): Array<CharArray> = File(filePath).readLines().map { it.toCharArray() }.toTypedArray()
+
+enum class Direction(
+    val orientation: Char,
+) {
+    UP('^'),
+    RIGHT('>'),
+    DOWN('v'),
+    LEFT('<'),
+    ;
+
+    fun next(): Direction = values()[(ordinal + 1) % values().size]
 }
 
-enum class Direction(val orientation: Char) {
-    UP('^'), RIGHT('>'), DOWN('v'), LEFT('<');
+data class Position(
+    var coordinates: Pair<Int, Int>,
+    var direction: Direction,
+)
 
-    fun next(): Direction {
-        return values()[(ordinal + 1) % values().size]
-    }
-}
-
-data class Position(var coordinates: Pair<Int, Int>, var direction: Direction)
-
-class Guard(var position: Position){
+class Guard(
+    var position: Position,
+) {
     var inside = true
 
     init {
@@ -26,28 +33,29 @@ class Guard(var position: Position){
     fun takeStep(labMap: Array<CharArray>) {
         val nextPosition = lookAhead()
         when {
-            !this.isInside(labMap, nextPosition) ->  inside = false
+            !this.isInside(labMap, nextPosition) -> inside = false
             this.isObstacle(labMap, nextPosition) -> position.direction = position.direction.next()
             else -> position.coordinates = nextPosition
         }
     }
 
-    private fun isInside(labMap: Array<CharArray>, coordinates: Pair<Int, Int>): Boolean {
-        return coordinates.second in labMap.indices && coordinates.first in labMap[coordinates.second].indices
-    }
+    private fun isInside(
+        labMap: Array<CharArray>,
+        coordinates: Pair<Int, Int>,
+    ): Boolean = coordinates.second in labMap.indices && coordinates.first in labMap[coordinates.second].indices
 
-    private fun isObstacle(labMap: Array<CharArray>, coordinates: Pair<Int, Int>): Boolean {
-        return labMap[coordinates.second][coordinates.first] in listOf('#', 'O')
-    }
+    private fun isObstacle(
+        labMap: Array<CharArray>,
+        coordinates: Pair<Int, Int>,
+    ): Boolean = labMap[coordinates.second][coordinates.first] in listOf('#', 'O')
 
-    private fun lookAhead(): Pair<Int, Int> {
-        return when (position.direction) {
+    private fun lookAhead(): Pair<Int, Int> =
+        when (position.direction) {
             Direction.UP -> position.coordinates.copy(second = position.coordinates.second - 1)
             Direction.RIGHT -> position.coordinates.copy(first = position.coordinates.first + 1)
             Direction.DOWN -> position.coordinates.copy(second = position.coordinates.second + 1)
             Direction.LEFT -> position.coordinates.copy(first = position.coordinates.first - 1)
         }
-    }
 }
 
 fun getStartingPosition(labMap: Array<CharArray>): Position {
@@ -82,7 +90,7 @@ fun findObstructionPositions(labMap: Array<CharArray>): MutableSet<Pair<Int, Int
 
     for (position in possiblePositions) {
         // Forbidden to place obstruciton in guards starting position
-        if (position.coordinates == startingPosition.coordinates){
+        if (position.coordinates == startingPosition.coordinates) {
             continue
         }
 
@@ -103,12 +111,10 @@ fun findObstructionPositions(labMap: Array<CharArray>): MutableSet<Pair<Int, Int
     return obstructionPositions
 }
 
-fun solution_part2(labMap: Array<CharArray>): Int {
-    return findObstructionPositions(labMap).count()
-}
+fun solutionPart2(labMap: Array<CharArray>): Int = findObstructionPositions(labMap).count()
 
 fun main() {
     val labMap = readInput("input.txt")
-    val result = solution_part2(labMap)
+    val result = solutionPart2(labMap)
     println("Obstructions can be placed in $result positions.")
 }
